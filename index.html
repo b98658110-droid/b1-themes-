@@ -1,878 +1,948 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Grammar Board — Present Continuous & Reported Speech</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700;9..144,900&family=Inter:wght@400;500;600;700&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --board: #1e2b22;
-    --board-2: #223327;
-    --chalk: #eee6d3;
-    --chalk-dim: #b9c2b6;
-    --paper: #f6f1e3;
-    --paper-2: #efe8d6;
-    --ink: #232017;
-    --ink-soft: #4a463b;
-    --red-pen: #c3443a;
-    --yellow-chalk: #e3bd63;
-    --blue-chalk: #83a7c4;
-    --green-check: #6f9a63;
-    --rule: rgba(35,32,23,0.14);
-  }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Grammar B1+ Notebook</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    :root {
+      --bg: #f6faf7;
+      --white: #ffffff;
+      --green-deep: #1a6e4a;
+      --green-mid: #2e8b57;
+      --green-soft: #daf0e4;
+      --green-pale: #eaf7f0;
+      --ink: #1a2e2a;
+      --ink-soft: #3a554a;
+      --rule: #c3d9ce;
+      --rule-strong: #a8c2b5;
+      --shadow: rgba(26, 46, 42, 0.08);
+      --radius: 16px;
+      --maxw: 880px;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      background: var(--bg);
+      background-image: radial-gradient(circle at 1px 1px, rgba(26, 110, 74, 0.05) 1px, transparent 1px);
+      background-size: 24px 24px;
+      color: var(--ink);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+    :focus-visible {
+      outline: 3px solid var(--green-mid);
+      outline-offset: 2px;
+      border-radius: 6px;
+    }
 
-  *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{
-    margin:0;
-    background:
-      radial-gradient(ellipse at 20% 0%, rgba(255,255,255,0.04), transparent 45%),
-      var(--board);
-    color:var(--chalk);
-    font-family:'Inter', sans-serif;
-    -webkit-font-smoothing:antialiased;
-  }
+    /* header */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 60;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--rule);
+    }
+    .header-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .burger-btn {
+      width: 46px;
+      height: 46px;
+      border-radius: 12px;
+      border: 1px solid var(--rule-strong);
+      background: var(--white);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .burger-btn:hover {
+      background: var(--green-pale);
+    }
+    .burger-btn:active {
+      transform: scale(0.94);
+    }
+    .burger-btn span {
+      display: block;
+      width: 20px;
+      height: 2.5px;
+      background: var(--ink);
+      border-radius: 4px;
+      transition: transform 0.25s, opacity 0.25s;
+    }
+    .burger-btn.open span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+    .burger-btn.open span:nth-child(2) {
+      opacity: 0;
+    }
+    .burger-btn.open span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
 
-  /* subtle chalkboard texture */
-  body::before{
-    content:"";
-    position:fixed;
-    inset:0;
-    pointer-events:none;
-    opacity:0.05;
-    background-image:
-      repeating-linear-gradient(90deg, transparent 0 2px, #fff 2px 3px, transparent 3px 60px),
-      repeating-linear-gradient(0deg, transparent 0 2px, #fff 2px 3px, transparent 3px 60px);
-    z-index:0;
-  }
+    .brand {
+      font-family: 'Fraunces', serif;
+      font-weight: 600;
+      font-size: 1.15rem;
+      letter-spacing: 0.01em;
+    }
+    .brand .accent {
+      color: var(--green-deep);
+    }
+    .brand-sub {
+      display: block;
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      margin-top: 2px;
+    }
 
-  .wrap{max-width:920px; margin:0 auto; padding:0 20px; position:relative; z-index:1;}
+    /* nav overlay & drawer */
+    .nav-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(20, 36, 30, 0.3);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s;
+      z-index: 70;
+    }
+    .nav-overlay.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .nav-drawer {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: min(340px, 86vw);
+      background: var(--white);
+      border-right: 1px solid var(--rule);
+      transform: translateX(-104%);
+      transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+      z-index: 80;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 6px 0 30px rgba(26, 46, 42, 0.12);
+    }
+    .nav-drawer.open {
+      transform: translateX(0);
+    }
+    .nav-drawer-head {
+      padding: 20px 22px 14px;
+      border-bottom: 1px solid var(--rule);
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    .nav-drawer-head h2 {
+      font-family: 'Fraunces', serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin: 0 0 4px;
+      color: var(--green-deep);
+    }
+    .nav-drawer-head p {
+      margin: 0;
+      font-size: 0.78rem;
+      color: var(--ink-soft);
+    }
+    .nav-close {
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      line-height: 1;
+      cursor: pointer;
+      color: var(--ink-soft);
+      padding: 2px 6px;
+      border-radius: 8px;
+    }
+    .nav-close:hover {
+      color: var(--ink);
+      background: var(--green-soft);
+    }
 
-  /* ---------- HERO ---------- */
-  header.hero{
-    padding:64px 0 40px;
-    text-align:center;
-  }
-  .chalk-label{
-    font-family:'Caveat', cursive;
-    font-size:1.5rem;
-    color:var(--yellow-chalk);
-    letter-spacing:0.5px;
-    display:inline-block;
-    transform:rotate(-2deg);
-    margin-bottom:6px;
-  }
-  h1.title{
-    font-family:'Fraunces', serif;
-    font-weight:700;
-    font-size:clamp(2.2rem, 6vw, 3.6rem);
-    line-height:1.05;
-    margin:0 0 14px;
-    color:var(--chalk);
-  }
-  h1.title em{
-    font-style:normal;
-    color:var(--yellow-chalk);
-    position:relative;
-  }
-  .hero-sub{
-    color:var(--chalk-dim);
-    font-size:1.05rem;
-    max-width:520px;
-    margin:0 auto;
-    line-height:1.6;
-  }
-  .hero-dates{
-    margin-top:22px;
-    font-family:'Caveat', cursive;
-    font-size:1.3rem;
-    color:var(--blue-chalk);
-  }
+    .nav-list {
+      list-style: none;
+      margin: 0;
+      padding: 10px 10px 22px;
+      overflow-y: auto;
+      flex: 1;
+    }
+    .nav-list li + li {
+      margin-top: 2px;
+    }
+    .nav-list a {
+      display: flex;
+      align-items: baseline;
+      gap: 11px;
+      text-decoration: none;
+      padding: 10px 12px;
+      border-radius: 10px;
+      font-size: 0.92rem;
+      color: var(--ink);
+      transition: background 0.15s, padding-left 0.15s;
+    }
+    .nav-list a:hover {
+      background: var(--green-pale);
+      padding-left: 16px;
+    }
+    .nav-list a.active {
+      background: rgba(46, 139, 87, 0.15);
+      color: var(--green-deep);
+      font-weight: 600;
+    }
+    .nav-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--green-deep);
+      flex-shrink: 0;
+      width: 1.6em;
+    }
 
-  /* ---------- NAV TABS ---------- */
-  nav.tabs{
-    position:sticky;
-    top:0;
-    z-index:20;
-    background:linear-gradient(180deg, var(--board) 60%, transparent);
-    padding:14px 0 18px;
-  }
-  .tab-row{
-    display:flex;
-    gap:10px;
-    justify-content:center;
-    flex-wrap:wrap;
-  }
-  .tab-btn{
-    font-family:'Inter';
-    font-weight:600;
-    font-size:0.95rem;
-    color:var(--chalk);
-    background:rgba(255,255,255,0.03);
-    border:1.5px dashed rgba(238,230,211,0.35);
-    border-radius:10px;
-    padding:10px 20px;
-    cursor:pointer;
-    transition:all .2s ease;
-  }
-  .tab-btn:hover{ background:rgba(255,255,255,0.08); }
-  .tab-btn.active{
-    background:var(--yellow-chalk);
-    color:#2a2210;
-    border-color:var(--yellow-chalk);
-    border-style:solid;
-  }
+    /* hero */
+    .hero {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 48px 22px 28px;
+    }
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.74rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--green-deep);
+      background: var(--green-pale);
+      border: 1px solid var(--rule-strong);
+      padding: 5px 14px;
+      border-radius: 40px;
+      margin-bottom: 18px;
+    }
+    .hero h1 {
+      font-family: 'Fraunces', serif;
+      font-weight: 700;
+      font-size: clamp(2rem, 5vw, 2.9rem);
+      line-height: 1.12;
+      margin: 0 0 12px;
+      color: var(--green-deep);
+    }
+    .hero p.lead {
+      font-size: 1.02rem;
+      color: var(--ink-soft);
+      max-width: 560px;
+      margin: 0 0 24px;
+    }
+    .quick-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 8px;
+    }
+    .quick-grid a {
+      text-decoration: none;
+      border: 1px solid var(--rule-strong);
+      background: var(--white);
+      border-radius: 12px;
+      padding: 10px 12px;
+      font-size: 0.82rem;
+      display: flex;
+      gap: 8px;
+      align-items: baseline;
+      color: var(--ink);
+      transition: transform 0.15s, border-color 0.15s, box-shadow 0.15s;
+    }
+    .quick-grid a:hover {
+      border-color: var(--green-mid);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px var(--shadow);
+    }
+    .quick-grid .nav-num {
+      width: auto;
+    }
 
-  section.page{ display:none; padding-bottom:70px; }
-  section.page.active{ display:block; animation:fadein .35s ease; }
-  @keyframes fadein{ from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:translateY(0);} }
+    /* main topics */
+    main {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 8px 22px 80px;
+    }
+    .topic {
+      scroll-margin-top: 84px;
+      background: var(--white);
+      border: 1px solid var(--rule);
+      border-radius: var(--radius);
+      padding: 34px clamp(18px, 4vw, 40px) 38px;
+      margin-bottom: 34px;
+      position: relative;
+      box-shadow: 0 2px 0 var(--rule), 0 14px 30px -18px var(--shadow);
+    }
+    .topic::before {
+      content: attr(data-num);
+      position: absolute;
+      top: -16px;
+      left: clamp(18px, 4vw, 40px);
+      background: var(--green-deep);
+      color: #fff;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 600;
+      font-size: 0.78rem;
+      padding: 5px 12px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(26, 110, 74, 0.3);
+    }
+    .topic h2 {
+      font-family: 'Fraunces', serif;
+      font-weight: 600;
+      font-size: clamp(1.3rem, 3.2vw, 1.65rem);
+      margin: 6px 0 18px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--rule);
+      color: var(--green-deep);
+    }
+    .topic h3 {
+      font-family: 'Fraunces', serif;
+      font-weight: 600;
+      font-size: 1.15rem;
+      margin: 28px 0 12px;
+      color: var(--green-mid);
+    }
+    .topic h3:first-of-type {
+      margin-top: 6px;
+    }
+    .topic h4.sub {
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: 0.92rem;
+      margin: 20px 0 8px;
+      color: var(--ink);
+    }
+    .topic p {
+      margin: 0 0 12px;
+      color: var(--ink-soft);
+    }
+    .topic p.note {
+      color: var(--ink);
+    }
+    .usage-list {
+      margin: 0 0 16px;
+      padding-left: 0;
+      list-style: none;
+    }
+    .usage-list li {
+      position: relative;
+      padding-left: 20px;
+      margin-bottom: 6px;
+      color: var(--ink-soft);
+    }
+    .usage-list li::before {
+      content: '';
+      position: absolute;
+      left: 2px;
+      top: 0.6em;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--green-mid);
+    }
 
-  .section-heading{
-    font-family:'Fraunces', serif;
-    font-weight:600;
-    font-size:1.6rem;
-    color:var(--chalk);
-    margin:46px 0 18px;
-    display:flex;
-    align-items:baseline;
-    gap:12px;
-  }
-  .section-heading .no{
-    font-family:'Caveat', cursive;
-    color:var(--red-pen);
-    font-size:1.9rem;
-    -webkit-text-stroke: 0.3px var(--red-pen);
-  }
-  .section-heading:first-of-type{ margin-top:10px; }
+    .formula {
+      font-family: 'JetBrains Mono', monospace;
+      background: var(--green-pale);
+      border: 1px dashed var(--green-mid);
+      border-radius: 12px;
+      padding: 14px 18px;
+      margin: 0 0 18px;
+      font-size: 0.9rem;
+      color: #1a402e;
+      overflow-x: auto;
+      line-height: 1.8;
+    }
+    .formula .label {
+      display: inline-block;
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      background: var(--green-deep);
+      color: #fff;
+      padding: 2px 10px;
+      border-radius: 6px;
+      margin-bottom: 8px;
+    }
 
-  /* ---------- PAPER CARD ---------- */
-  .paper{
-    background:var(--paper);
-    color:var(--ink);
-    border-radius:3px;
-    padding:26px 28px;
-    box-shadow: 0 18px 40px -18px rgba(0,0,0,0.55), 0 2px 0 rgba(0,0,0,0.05);
-    position:relative;
-  }
-  .paper + .paper{ margin-top:18px; }
-  .paper.torn::before{
-    content:"";
-    position:absolute; top:0; left:0; right:0; height:8px;
-    background:
-      linear-gradient(135deg, var(--board) 50%, transparent 50%) 0 0/14px 14px repeat-x,
-      linear-gradient(45deg, var(--board) 50%, transparent 50%) 0 0/14px 14px repeat-x;
-    background-position: 0 0, 7px 0;
-    opacity:.9;
-  }
+    .state-block {
+      border-left: 4px solid var(--rule-strong);
+      padding: 4px 0 4px 18px;
+      margin: 0 0 18px;
+    }
+    .state-block.positive {
+      border-left-color: var(--green-deep);
+    }
+    .state-block.negative {
+      border-left-color: #b35c4a;
+    }
+    .state-block.question {
+      border-left-color: var(--green-mid);
+    }
+    .state-title {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      margin-bottom: 8px;
+    }
+    .state-block.positive .state-title {
+      color: var(--green-deep);
+    }
+    .state-block.negative .state-title {
+      color: #b35c4a;
+    }
+    .state-block.question .state-title {
+      color: var(--green-mid);
+    }
 
-  .formula-table{
-    width:100%;
-    border-collapse:collapse;
-    font-size:0.95rem;
-  }
-  .formula-table td{
-    padding:10px 12px;
-    border-bottom:1px solid var(--rule);
-    vertical-align:top;
-  }
-  .formula-table tr:last-child td{ border-bottom:none; }
-  .formula-table .form-type{
-    font-family:'Fraunces', serif;
-    font-weight:700;
-    color:var(--red-pen);
-    width:40px;
-  }
-  .formula-table code{
-    font-family:'Fraunces', serif;
-    font-weight:600;
-    color:var(--ink);
-  }
-  .formula-table .rus{ color:var(--ink-soft); font-size:0.88rem; }
+    .examples {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin: 0 0 6px;
+    }
+    .example {
+      background: var(--bg);
+      border: 1px solid var(--rule);
+      border-left: 3px solid var(--green-mid);
+      border-radius: 10px;
+      padding: 10px 14px;
+      font-size: 0.94rem;
+    }
+    .example .en {
+      font-weight: 500;
+      color: var(--ink);
+    }
+    .example .ru {
+      color: var(--ink-soft);
+      font-size: 0.87rem;
+      margin-top: 2px;
+    }
 
-  .usecase{
-    margin-bottom:0;
-  }
-  .usecase-title{
-    font-family:'Fraunces', serif;
-    font-weight:600;
-    font-size:1.15rem;
-    margin:0 0 4px;
-    color:var(--ink);
-  }
-  .usecase-sub{
-    font-size:0.85rem;
-    color:var(--ink-soft);
-    margin-bottom:12px;
-  }
-  .keywords{
-    display:inline-flex;
-    flex-wrap:wrap;
-    gap:6px;
-    margin-bottom:14px;
-  }
-  .keyword-chip{
-    font-family:'Caveat', cursive;
-    font-size:1.05rem;
-    background:rgba(195,68,58,0.08);
-    border:1px solid rgba(195,68,58,0.3);
-    color:var(--red-pen);
-    padding:2px 12px;
-    border-radius:20px;
-  }
+    .grammar-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 0 0 20px;
+      font-size: 0.94rem;
+      border-radius: 12px;
+      border: 1px solid var(--rule);
+      overflow: hidden;
+    }
+    .grammar-table th,
+    .grammar-table td {
+      padding: 10px 14px;
+      text-align: left;
+      border-bottom: 1px solid var(--rule);
+    }
+    .grammar-table th {
+      background: var(--green-soft);
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--green-deep);
+    }
+    .grammar-table tr:last-child td {
+      border-bottom: none;
+    }
+    .grammar-table tr:nth-child(even) td {
+      background: rgba(46, 139, 87, 0.04);
+    }
 
-  .example{
-    background:var(--paper-2);
-    border-left:3px solid var(--blue-chalk);
-    border-radius:2px;
-    padding:12px 16px;
-    margin-bottom:10px;
-    font-size:0.98rem;
-    line-height:1.55;
-  }
-  .example:last-child{ margin-bottom:0; }
-  .ru-line{ color:var(--ink-soft); }
-  .arrow-line{
-    display:flex;
-    align-items:center;
-    gap:10px;
-    margin-top:4px;
-  }
-  .hand-arrow{
-    font-family:'Caveat', cursive;
-    font-size:1.4rem;
-    color:var(--red-pen);
-    line-height:1;
-  }
-  .en-line{ font-weight:600; color:var(--ink); }
-  .en-line .underline{
-    text-decoration: none;
-    background-image: linear-gradient(var(--yellow-chalk), var(--yellow-chalk));
-    background-repeat:no-repeat;
-    background-size:100% 40%;
-    background-position:0 88%;
-    padding:0 1px;
-  }
+    .keyword-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+    .pill {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      background: var(--green-pale);
+      color: var(--green-deep);
+      border: 1px solid var(--rule-strong);
+      padding: 4px 12px;
+      border-radius: 40px;
+    }
 
-  /* stative verbs grid */
-  .stative-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit, minmax(210px, 1fr));
-    gap:14px;
-    margin-top:8px;
-  }
-  .stative-card{
-    background:var(--paper-2);
-    border-radius:6px;
-    padding:14px 16px;
-    border:1px solid var(--rule);
-  }
-  .stative-card h4{
-    margin:0 0 8px;
-    font-family:'Fraunces', serif;
-    font-size:1.02rem;
-    color:var(--red-pen);
-    display:flex;
-    align-items:center;
-    gap:8px;
-  }
-  .stative-card h4 .dot{
-    width:7px; height:7px; border-radius:50%;
-    background:var(--red-pen); display:inline-block;
-  }
-  .stative-card ul{ margin:0; padding-left:18px; font-size:0.92rem; line-height:1.9; color:var(--ink);}
-  .stative-card ul li b{ font-weight:600; }
-  .stative-card ul li span{ color:var(--ink-soft); }
+    .top-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.8rem;
+      color: var(--ink-soft);
+      text-decoration: none;
+      margin-top: 10px;
+      transition: color 0.15s;
+    }
+    .top-link:hover {
+      color: var(--green-deep);
+    }
 
-  /* reported speech tables */
-  .grid-2{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:18px;
-  }
-  @media (max-width:640px){ .grid-2{ grid-template-columns:1fr; } }
+    .divider {
+      border: none;
+      border-top: 1px dashed var(--rule-strong);
+      margin: 28px 0;
+    }
 
-  .change-table{ width:100%; border-collapse:collapse; font-size:0.92rem;}
-  .change-table th{
-    text-align:left; font-family:'Fraunces', serif; font-weight:600;
-    color:var(--ink-soft); font-size:0.78rem; text-transform:uppercase; letter-spacing:0.06em;
-    padding:6px 10px; border-bottom:2px solid var(--ink);
-  }
-  .change-table td{ padding:8px 10px; border-bottom:1px solid var(--rule); }
-  .change-table tr:hover td{ background:rgba(195,68,58,0.05); }
-  .arrow-mid{ color:var(--red-pen); font-weight:700; padding:0 4px;}
+    .exceptions-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+    .exception-card {
+      background: var(--bg);
+      border: 1px solid var(--rule);
+      border-radius: 10px;
+      padding: 12px 14px;
+    }
+    .exception-card .verb {
+      font-weight: 700;
+      color: var(--green-deep);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+    }
+    .exception-card .mean {
+      color: var(--ink-soft);
+      font-size: 0.84rem;
+      margin: 2px 0 6px;
+    }
+    .exception-card .ex {
+      font-size: 0.88rem;
+    }
 
-  .reporting-verbs{
-    display:flex; gap:14px; flex-wrap:wrap; margin-top:6px;
-  }
-  .rv-card{
-    flex:1; min-width:220px;
-    background:var(--paper-2); border-radius:6px; padding:14px 16px;
-    border:1px solid var(--rule);
-  }
-  .rv-card b{ color:var(--red-pen); font-family:'Fraunces', serif; }
+    /* footer */
+    footer {
+      border-top: 1px solid var(--rule);
+      background: var(--white);
+      padding: 34px 22px 38px;
+    }
+    .footer-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 18px;
+      align-items: center;
+    }
+    .footer-brand {
+      font-family: 'Fraunces', serif;
+      font-weight: 600;
+      font-size: 1rem;
+      color: var(--green-deep);
+    }
+    .footer-credits {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 22px;
+      font-size: 0.88rem;
+      color: var(--ink-soft);
+    }
+    .footer-credits .role {
+      text-transform: uppercase;
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      color: var(--green-deep);
+      display: block;
+      margin-bottom: 2px;
+    }
+    .footer-note {
+      width: 100%;
+      text-align: center;
+      font-size: 0.76rem;
+      color: var(--ink-soft);
+      margin-top: 18px;
+      padding-top: 16px;
+      border-top: 1px dashed var(--rule-strong);
+    }
 
-  /* worked examples - flip reveal */
-  .flip-list{ display:flex; flex-direction:column; gap:10px; }
-  .flip-card{
-    background:var(--paper-2);
-    border-radius:6px;
-    padding:14px 16px;
-    cursor:pointer;
-    border:1px solid var(--rule);
-    transition:background .15s ease;
-    position:relative;
-  }
-  .flip-card:hover{ background:#e9e1c9; }
-  .flip-card .num{
-    font-family:'Fraunces', serif; font-weight:700; color:var(--red-pen); margin-right:8px;
-  }
-  .flip-card .direct{ color:var(--ink); }
-  .flip-card .reveal{
-    display:none;
-    margin-top:8px;
-    padding-top:8px;
-    border-top:1px dashed var(--rule);
-    color:var(--ink-soft);
-  }
-  .flip-card.open .reveal{ display:block; }
-  .flip-card .reveal b{ color:var(--ink); font-weight:600; }
-  .flip-hint{
-    font-family:'Caveat', cursive;
-    color:var(--blue-chalk);
-    font-size:0.85rem;
-    position:absolute; top:12px; right:14px;
-  }
-
-  /* ---------- QUIZ ---------- */
-  .quiz-box{
-    background:var(--paper);
-    border-radius:6px;
-    padding:26px 28px;
-    margin-top:10px;
-  }
-  .quiz-progress{
-    display:flex; justify-content:space-between; align-items:center;
-    margin-bottom:18px; font-size:0.85rem; color:var(--ink-soft);
-  }
-  .quiz-score{ font-family:'Fraunces', serif; font-weight:700; color:var(--red-pen); }
-  .quiz-q{
-    font-size:1.05rem; margin-bottom:16px; color:var(--ink); line-height:1.5;
-  }
-  .quiz-q .ru{ display:block; color:var(--ink-soft); font-size:0.9rem; margin-bottom:6px; }
-  .quiz-options{ display:flex; flex-direction:column; gap:10px; }
-  .quiz-opt{
-    text-align:left;
-    padding:12px 16px;
-    border-radius:6px;
-    border:1.5px solid var(--rule);
-    background:var(--paper-2);
-    font-size:0.98rem;
-    font-family:'Inter';
-    cursor:pointer;
-    transition:all .15s ease;
-    color:var(--ink);
-  }
-  .quiz-opt:hover{ border-color:var(--blue-chalk); }
-  .quiz-opt.correct{ background:rgba(111,154,99,0.18); border-color:var(--green-check); }
-  .quiz-opt.wrong{ background:rgba(195,68,58,0.14); border-color:var(--red-pen); }
-  .quiz-opt[disabled]{ cursor:default; }
-  .quiz-feedback{
-    margin-top:14px; font-size:0.92rem; min-height:20px; color:var(--ink-soft);
-  }
-  .quiz-nav{ display:flex; justify-content:flex-end; margin-top:16px; }
-  .btn{
-    font-family:'Inter'; font-weight:600; font-size:0.9rem;
-    background:var(--ink); color:var(--paper);
-    border:none; border-radius:6px; padding:10px 20px; cursor:pointer;
-  }
-  .btn:hover{ background:#000; }
-  .btn:disabled{ opacity:0.35; cursor:not-allowed; }
-  .quiz-done{ text-align:center; padding:20px 0; }
-  .quiz-done .big-score{
-    font-family:'Fraunces', serif; font-size:2.6rem; font-weight:700; color:var(--red-pen);
-  }
-  .restart-btn{ margin-top:14px; }
-
-  footer{
-    text-align:center;
-    padding:40px 0 60px;
-    color:var(--chalk-dim);
-    font-size:0.85rem;
-  }
-  footer .sig{
-    font-family:'Caveat', cursive;
-    font-size:1.4rem;
-    color:var(--yellow-chalk);
-  }
-
-  @media (max-width:600px){
-    .paper{ padding:20px 18px; }
-    .quiz-box{ padding:20px 18px; }
-    .section-heading{ font-size:1.35rem; }
-  }
-
-  @media (prefers-reduced-motion: reduce){
-    *{ animation:none !important; transition:none !important; }
-  }
-</style>
+    @media (max-width:600px) {
+      .hero {
+        padding: 32px 16px 20px;
+      }
+      .topic {
+        padding: 30px 16px 30px;
+      }
+      main {
+        padding: 6px 14px 60px;
+      }
+      .topic::before {
+        left: 16px;
+      }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+      * {
+        transition-duration: 0.001ms !important;
+        animation-duration: 0.001ms !important;
+      }
+    }
+  </style>
 </head>
 <body>
 
-<div class="wrap">
-  <header class="hero">
-    <span class="chalk-label">английская группа · тетрадь по грамматике</span>
-    <h1 class="title">Grammar <em>Board</em></h1>
-    <p class="hero-sub">Present Continuous и Reported Speech — правила, примеры и практика для повторения к уроку.</p>
-    <div class="hero-dates">09.07.2026 → 14.07.2026</div>
+  <header class="site-header">
+    <div class="header-inner">
+      <button class="burger-btn" id="burgerBtn" aria-label="Открыть меню" aria-expanded="false" aria-controls="navDrawer">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="brand">
+        Grammar<span class="accent">B1+</span>
+        <span class="brand-sub">3 темы · уровень B1+</span>
+      </div>
+    </div>
   </header>
 
-  <nav class="tabs">
-    <div class="tab-row">
-      <button class="tab-btn active" data-target="pc-page">1 · Present Continuous</button>
-      <button class="tab-btn" data-target="rs-page">2 · Reported Speech</button>
-      <button class="tab-btn" data-target="quiz-page">✎ Практика</button>
+  <div class="nav-overlay" id="navOverlay"></div>
+
+  <nav class="nav-drawer" id="navDrawer" aria-label="Навигация">
+    <div class="nav-drawer-head">
+      <div>
+        <h2>Содержание</h2>
+        <p>Выберите тему для перехода</p>
+      </div>
+      <button class="nav-close" id="navClose" aria-label="Закрыть меню">×</button>
     </div>
+    <ul class="nav-list" id="navList">
+      <li><a href="#topic-1"><span class="nav-num">01</span> Present Continuous</a></li>
+      <li><a href="#topic-2"><span class="nav-num">02</span> Reported Speech (основная часть)</a></li>
+      <li><a href="#topic-3"><span class="nav-num">03</span> Reported Speech (продолжение)</a></li>
+      <li><a href="#topic-4"><span class="nav-num">04</span> Used to & Would</a></li>
+    </ul>
   </nav>
 
-  <!-- ============ PAGE 1: PRESENT CONTINUOUS ============ -->
-  <section class="page active" id="pc-page">
-
-    <div class="section-heading"><span class="no">§1</span> Формула</div>
-    <div class="paper torn">
-      <table class="formula-table">
-        <tr>
-          <td class="form-type">(+)</td>
-          <td><code>S + am/is/are + V_ing + C.M.</code></td>
-          <td class="rus">Утверждение</td>
-        </tr>
-        <tr>
-          <td class="form-type">(–)</td>
-          <td><code>S + am/is/are + not + V_ing + C.M.</code></td>
-          <td class="rus">Отрицание</td>
-        </tr>
-        <tr>
-          <td class="form-type">(?)</td>
-          <td><code>Am/Is/Are + S + V_ing + C.M.?</code></td>
-          <td class="rus">Вопрос</td>
-        </tr>
-      </table>
-      <table class="formula-table" style="margin-top:6px;">
-        <tr>
-          <td class="form-type">短</td>
-          <td><code>Yes, S + am/is/are.</code></td>
-          <td class="rus">Краткий положительный ответ</td>
-        </tr>
-        <tr>
-          <td class="form-type">短</td>
-          <td><code>No, S + isn't / aren't.</code></td>
-          <td class="rus">Краткий отрицательный ответ</td>
-        </tr>
-      </table>
+  <div class="hero">
+    <span class="hero-tag">● B1+ грамматика</span>
+    <h1>Тетрадь по английской грамматике</h1>
+    <p class="lead">Present Continuous, Reported Speech (косвенная речь) — все правила, формулы и примеры в одном месте.</p>
+    <div class="quick-grid">
+      <a href="#topic-1"><span class="nav-num">01</span> Present Continuous</a>
+      <a href="#topic-2"><span class="nav-num">02</span> Reported Speech (основная)</a>
+      <a href="#topic-3"><span class="nav-num">03</span> Reported Speech (продолжение)</a>
     </div>
+  </div>
 
-    <div class="section-heading"><span class="no">1</span> Действие, происходящее прямо сейчас</div>
-    <div class="paper">
-      <p class="usecase-sub">Ключевые слова: <i>now, right now, at the moment</i></p>
-      <div class="example">
-        <div class="ru-line">Я читаю книгу моего брата сейчас.</div>
-        <div class="arrow-line"><span class="hand-arrow">→</span><span class="en-line">I am <span class="underline">(I'm)</span> reading my brother's book now.</span></div>
-      </div>
-      <div class="example">
-        <div class="ru-line">Я читаю интересный журнал прямо сейчас.</div>
-        <div class="arrow-line"><span class="hand-arrow">→</span><span class="en-line">I'm reading an interesting magazine right now.</span></div>
-      </div>
-    </div>
+  <main>
 
-    <div class="section-heading"><span class="no">2</span> Временные ситуации</div>
-    <div class="paper">
-      <div class="keywords">
-        <span class="keyword-chip">temporarily</span>
-        <span class="keyword-chip">this month</span>
-        <span class="keyword-chip">this week</span>
-        <span class="keyword-chip">these days</span>
-      </div>
-      <div class="example">
-        <div class="ru-line">Azizbek встречается с ней временно.</div>
-        <div class="arrow-line"><span class="hand-arrow">→</span><span class="en-line">Azizbek is dating her temporarily.</span></div>
-      </div>
-      <div class="example">
-        <div class="ru-line">М.У. будет жить в деревне на этой неделе.</div>
-        <div class="arrow-line"><span class="hand-arrow">→</span><span class="en-line">M.U. is living in the village this week.</span></div>
-      </div>
-    </div>
+    <!-- TOPIC 1: Present Continuous -->
+    <section class="topic" id="topic-1" data-num="01">
+      <h2>Present Continuous</h2>
+      <p><strong>Краткие ответы (Short answers):</strong> Yes, S + am/is/are. / No, S + am/is/are + not.</p>
 
-    <div class="section-heading"><span class="no">3</span> Обычно… , но сейчас/сегодня…</div>
-    <div class="paper">
-      <p class="usecase-sub">Контраст привычки и того, что происходит сейчас/сегодня в порядке исключения.</p>
-      <div class="paper" style="background:var(--paper-2); box-shadow:none; padding:14px 16px; margin-bottom:14px;">
-        <code style="font-family:'Fraunces',serif; font-weight:600;">S + usually + V(s/es/ies), but today / but now + S + am/is/are + V_ing …</code>
-      </div>
-      <div class="example">
-        <div class="ru-line">Я обычно готовлю дома, но сегодня я закажу пиццу.</div>
-        <div class="arrow-line"><span class="hand-arrow">→</span><span class="en-line">I usually cook at home, but today I am ordering a pizza.</span></div>
-      </div>
-    </div>
-
-    <div class="section-heading"><span class="no">4</span> Меняющиеся / развивающиеся ситуации</div>
-    <div class="paper">
-      <div class="example">
-        <div class="ru-line">Он становится более уверенным.</div>
-        <div class="arrow-line"><span class="hand-arrow">→</span><span class="en-line">He is becoming more confident.</span></div>
-      </div>
-      <div class="example">
-        <div class="ru-line">Сегодня всё больше людей изучают английский.</div>
-        <div class="arrow-line"><span class="hand-arrow">→</span><span class="en-line">Today more people are learning English.</span></div>
-      </div>
-      <div class="example">
-        <div class="ru-line">Погода становится всё жарче и жарче.</div>
-        <div class="arrow-line"><span class="hand-arrow">→</span><span class="en-line">The weather is getting hotter and hotter.</span></div>
-      </div>
-    </div>
-
-    <div class="section-heading"><span class="no">5</span> Раздражающие повторяющиеся действия</div>
-    <div class="paper">
-      <div class="keywords">
-        <span class="keyword-chip">always</span>
-        <span class="keyword-chip">constantly</span>
-      </div>
-      <p class="usecase-sub">Используется только тогда, когда действие кого-то раздражает — «как ни посмотри».</p>
-      <div class="example">
-        <div class="ru-line">Nazokat постоянно приходит поздно.</div>
-        <div class="arrow-line"><span class="hand-arrow">→</span><span class="en-line">Nazokat is constantly coming late.</span></div>
-      </div>
-      <div class="example">
-        <div class="ru-line">Ibrohim, как ни посмотри, всегда играет в свой телефон. <i>(это раздражает)</i></div>
-        <div class="arrow-line"><span class="hand-arrow">→</span><span class="en-line">Ibrohim is always playing on his phone. It is annoying.</span></div>
-      </div>
-    </div>
-
-    <div class="section-heading"><span class="no">§2</span> Stative verbs — глаголы состояния</div>
-    <div class="paper">
-      <p class="usecase-sub">Эти глаголы обычно <b>не</b> употребляются в Present Continuous, т.к. описывают состояние, а не действие: <i>love, have, remember…</i></p>
-      <div class="stative-grid">
-        <div class="stative-card">
-          <h4><span class="dot"></span>Ментальные состояния</h4>
-          <ul>
-            <li><b>know</b> — <span>знать</span></li>
-            <li><b>understand</b> — <span>понимать</span></li>
-            <li><b>believe</b> — <span>верить</span></li>
-            <li><b>remember</b> — <span>помнить</span></li>
-          </ul>
-        </div>
-        <div class="stative-card">
-          <h4><span class="dot"></span>Эмоции</h4>
-          <ul>
-            <li><b>love</b> — <span>любить</span></li>
-            <li><b>like</b> — <span>нравиться</span></li>
-            <li><b>hate</b> — <span>ненавидеть</span></li>
-            <li><b>want</b> — <span>хотеть</span></li>
-          </ul>
-        </div>
-        <div class="stative-card">
-          <h4><span class="dot"></span>Обладание</h4>
-          <ul>
-            <li><b>have</b> — <span>иметь</span></li>
-            <li><b>own</b> — <span>владеть</span></li>
-            <li><b>belong</b> — <span>принадлежать</span></li>
-          </ul>
-        </div>
-        <div class="stative-card">
-          <h4><span class="dot"></span>Чувства и восприятие</h4>
-          <ul>
-            <li><b>see</b> — <span>видеть</span></li>
-            <li><b>hear</b> — <span>слышать</span></li>
-            <li><b>taste</b> — <span>иметь вкус</span></li>
-            <li><b>smell</b> — <span>пахнуть</span></li>
-          </ul>
-        </div>
-        <div class="stative-card">
-          <h4><span class="dot"></span>Прочие состояния</h4>
-          <ul>
-            <li><b>seem</b> — <span>казаться</span></li>
-            <li><b>look (+adj)</b> — <span>выглядеть</span></li>
-            <li><b>need</b> — <span>нуждаться</span></li>
-            <li><b>mean</b> — <span>значить</span></li>
-          </ul>
+      <div class="state-block positive">
+        <div class="state-title">(+) Positive</div>
+        <div class="formula">S + am/is/are + V_ing + C.M.</div>
+        <div class="examples">
+          <div class="example"><div class="en">I am reading my brother's book now.</div><div class="ru">Я читаю книгу моего брата сейчас.</div></div>
+          <div class="example"><div class="en">I'm reading an interesting magazine right now.</div><div class="ru">Я читаю интересный журнал прямо сейчас.</div></div>
         </div>
       </div>
-    </div>
-  </section>
 
-  <!-- ============ PAGE 2: REPORTED SPEECH ============ -->
-  <section class="page" id="rs-page">
-
-    <div class="section-heading"><span class="no">§1</span> Прямая и косвенная речь</div>
-    <div class="paper torn">
-      <div class="example">
-        <div class="ru-line" style="color:var(--ink-soft); font-size:0.85rem;">Direct speech (прямая речь)</div>
-        <div class="en-line">"I like chocolate."</div>
+      <div class="state-block negative">
+        <div class="state-title">(−) Negative</div>
+        <div class="formula">S + am/is/are + not + V_ing + C.M.</div>
+        <div class="examples">
+          <div class="example"><div class="en">He isn't sleeping now.</div><div class="ru">Он сейчас не спит.</div></div>
+        </div>
       </div>
-      <div class="example" style="border-left-color:var(--red-pen);">
-        <div class="ru-line" style="color:var(--ink-soft); font-size:0.85rem;">Reported speech (косвенная речь)</div>
-        <div class="en-line">He said (that) he liked chocolate.</div>
-      </div>
-    </div>
 
-    <div class="section-heading"><span class="no">§2</span> Изменения времён</div>
-    <div class="paper">
-      <table class="change-table">
-        <thead><tr><th>Прямая речь</th><th></th><th>Косвенная речь</th></tr></thead>
+      <div class="state-block question">
+        <div class="state-title">(?) Question</div>
+        <div class="formula">Am/is/are + S + V_ing + C.M.?</div>
+        <div class="examples">
+          <div class="example"><div class="en">Are you reading this book?</div><div class="ru">Ты читаешь эту книгу?</div></div>
+        </div>
+      </div>
+
+      <h3>Использование</h3>
+
+      <h4 class="sub">1. Действия, происходящие прямо сейчас</h4>
+      <div class="example"><div class="en">I'm reading an interesting magazine right now.</div><div class="ru">Я читаю интересный журнал прямо сейчас.</div></div>
+
+      <h4 class="sub">2. Временные ситуации (temporary situations)</h4>
+      <p><strong>Ключевые слова:</strong> temporarily, this month, these days, this week.</p>
+      <div class="examples">
+        <div class="example"><div class="en">Azizbek is dating her temporarily.</div><div class="ru">Азизбек встречается с ней временно.</div></div>
+        <div class="example"><div class="en">M.U. is living in the village this week.</div><div class="ru">М.У. будет жить в деревне на этой неделе.</div></div>
+      </div>
+
+      <h4 class="sub">3. Контраст с «usually»</h4>
+      <p><strong>usually ... but today / but now ...</strong></p>
+      <div class="example"><div class="en">I usually cook at home, but today I am ordering a pizza.</div><div class="ru">Я обычно готовлю дома, но сегодня я закажу пиццу.</div></div>
+
+      <h4 class="sub">4. Изменяющиеся или развивающиеся ситуации</h4>
+      <div class="examples">
+        <div class="example"><div class="en">He is becoming more confident.</div><div class="ru">Он становится более уверенным.</div></div>
+        <div class="example"><div class="en">Today more people are learning English.</div><div class="ru">Сегодня все больше людей изучают английский.</div></div>
+        <div class="example"><div class="en">The weather is getting hotter and hotter.</div><div class="ru">Погода становится все жарче и жарче.</div></div>
+      </div>
+
+      <h4 class="sub">5. Раздражающие повторяющиеся действия</h4>
+      <p><strong>Ключевые слова:</strong> always, constantly (только если раздражает).</p>
+      <div class="examples">
+        <div class="example"><div class="en">Nazokat is constantly coming late.</div><div class="ru">Назокат постоянно приходит поздно.</div></div>
+        <div class="example"><div class="en">Ibrohim is always playing on his phone. It is annoying.</div><div class="ru">Иброхим как ни посмотри всегда играет в телефон. Это раздражает.</div></div>
+      </div>
+
+      <h3>Stative Verbs (Глаголы состояния)</h3>
+      <p>Глаголы состояния <strong>не используются</strong> в Continuous. Они описывают состояние, а не действие.</p>
+      <div class="keyword-pills">
+        <span class="pill">know</span><span class="pill">understand</span><span class="pill">believe</span><span class="pill">remember</span>
+        <span class="pill">love</span><span class="pill">like</span><span class="pill">hate</span><span class="pill">want</span>
+        <span class="pill">have</span><span class="pill">own</span><span class="pill">belong</span>
+        <span class="pill">see</span><span class="pill">hear</span><span class="pill">taste</span><span class="pill">smell</span>
+        <span class="pill">seem</span><span class="pill">look</span><span class="pill">need</span><span class="pill">mean</span>
+      </div>
+      <div class="examples">
+        <div class="example"><div class="en">I know the answer.</div><div class="ru">Я знаю ответ. (не I am knowing)</div></div>
+        <div class="example"><div class="en">She loves chocolate.</div><div class="ru">Она любит шоколад.</div></div>
+        <div class="example"><div class="en">This book belongs to me.</div><div class="ru">Эта книга принадлежит мне.</div></div>
+      </div>
+      <a class="top-link" href="#topic-1">↑ начало темы</a>
+    </section>
+
+    <!-- TOPIC 2: Reported Speech (основная часть) -->
+    <section class="topic" id="topic-2" data-num="02">
+      <h2>Reported Speech — Косвенная речь (основная часть)</h2>
+      <p><strong>Прямая речь (Direct):</strong> "I like chocolate".<br />
+      <strong>Косвенная речь (Reported):</strong> He said (that) he liked chocolate.</p>
+
+      <h3>Изменение времён (Tense changes)</h3>
+      <table class="grammar-table">
+        <thead><tr><th>Direct Speech</th><th>Reported Speech</th></tr></thead>
         <tbody>
-          <tr><td>Present Simple</td><td class="arrow-mid">→</td><td>Past Simple</td></tr>
-          <tr><td>am / is / are</td><td class="arrow-mid">→</td><td>was / were</td></tr>
-          <tr><td>Present Continuous</td><td class="arrow-mid">→</td><td>Past Continuous</td></tr>
-          <tr><td>Present Perfect</td><td class="arrow-mid">→</td><td>Past Perfect</td></tr>
-          <tr><td>Past Simple</td><td class="arrow-mid">→</td><td>Past Perfect</td></tr>
-          <tr><td>Past Perfect</td><td class="arrow-mid">→</td><td>Past Perfect <i style="color:var(--ink-soft); font-size:0.85em;">(без изменений)</i></td></tr>
-          <tr><td>will</td><td class="arrow-mid">→</td><td>would</td></tr>
-          <tr><td>am/is/are going to</td><td class="arrow-mid">→</td><td>was/were going to</td></tr>
-          <tr><td>can</td><td class="arrow-mid">→</td><td>could</td></tr>
-          <tr><td>may</td><td class="arrow-mid">→</td><td>might</td></tr>
-          <tr><td>must / have to</td><td class="arrow-mid">→</td><td>had to</td></tr>
+          <tr><td>Present Simple</td><td>Past Simple</td></tr>
+          <tr><td>am/is/are</td><td>was/were</td></tr>
+          <tr><td>Present Continuous</td><td>Past Continuous</td></tr>
+          <tr><td>Present Perfect</td><td>Past Perfect</td></tr>
+          <tr><td>Past Simple</td><td>Past Perfect</td></tr>
+          <tr><td>will</td><td>would</td></tr>
+          <tr><td>am/is/are going to</td><td>was/were going to</td></tr>
+          <tr><td>can</td><td>could</td></tr>
+          <tr><td>may</td><td>might</td></tr>
+          <tr><td>must / have to</td><td>had to</td></tr>
         </tbody>
       </table>
-    </div>
 
-    <div class="section-heading"><span class="no">§3</span> Слова времени и места</div>
-    <div class="paper">
-      <div class="grid-2">
-        <table class="change-table">
-          <tbody>
-            <tr><td>now</td><td class="arrow-mid">→</td><td>then</td></tr>
-            <tr><td>today</td><td class="arrow-mid">→</td><td>that day</td></tr>
-            <tr><td>tonight</td><td class="arrow-mid">→</td><td>that night</td></tr>
-            <tr><td>yesterday</td><td class="arrow-mid">→</td><td>the day before</td></tr>
-            <tr><td>tomorrow</td><td class="arrow-mid">→</td><td>the next / following day</td></tr>
-            <tr><td>this</td><td class="arrow-mid">→</td><td>that</td></tr>
-          </tbody>
-        </table>
-        <table class="change-table">
-          <tbody>
-            <tr><td>these</td><td class="arrow-mid">→</td><td>those</td></tr>
-            <tr><td>here</td><td class="arrow-mid">→</td><td>there</td></tr>
-            <tr><td>next week</td><td class="arrow-mid">→</td><td>the following week</td></tr>
-            <tr><td>last night/week/year</td><td class="arrow-mid">→</td><td>the previous night/week/year</td></tr>
-            <tr><td>a night/week ago</td><td class="arrow-mid">→</td><td>a night/week before</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
+      <h3>Изменение указателей времени и места</h3>
+      <table class="grammar-table">
+        <thead><tr><th>Direct</th><th>Reported</th></tr></thead>
+        <tbody>
+          <tr><td>now</td><td>then</td></tr>
+          <tr><td>today</td><td>that day</td></tr>
+          <tr><td>tonight</td><td>that night</td></tr>
+          <tr><td>yesterday</td><td>the day before</td></tr>
+          <tr><td>tomorrow</td><td>the next day / the following day</td></tr>
+          <tr><td>last week</td><td>the previous week</td></tr>
+          <tr><td>this</td><td>that</td></tr>
+          <tr><td>here</td><td>there</td></tr>
+        </tbody>
+      </table>
 
-    <div class="section-heading"><span class="no">§4</span> Глаголы для передачи речи</div>
-    <div class="paper">
-      <div class="reporting-verbs">
-        <div class="rv-card"><b>said (that)</b><br>— сказал (без указания получателя)</div>
-        <div class="rv-card"><b>told + (me/us/you/them/her/him) + that</b><br>— сказал <i>кому-то</i> (обязательно нужен объект)</div>
-      </div>
-    </div>
+      <h3>Глаголы для передачи утверждений</h3>
+      <p><strong>said (that)</strong> — сказал<br />
+      <strong>told (me/him/her/us/them) that</strong> — сказал кому-то</p>
 
-    <div class="section-heading"><span class="no">§5</span> Разбор примеров <span style="font-family:'Caveat',cursive; color:var(--blue-chalk); font-size:1.1rem; font-weight:normal;">(нажми, чтобы открыть ответ)</span></div>
-    <div class="paper">
-      <div class="flip-list" id="flip-list"></div>
-    </div>
-  </section>
+      <div class="examples">
+        <div class="example"><div class="en">She said (that) she was tired.</div><div class="ru">Она сказала, что устала.</div></div>
+        <div class="example"><div class="en">She said that they were going to the museum that day.</div><div class="ru">Она сказала, что они идут в музей в тот день.</div></div>
+        <div class="example"><div class="en">He said that he couldn't find his phone.</div><div class="ru">Он сказал, что не может найти свой телефон.</div></div>
+        <div class="example"><div class="en">She told me she had a meeting that day.</div><div class="ru">Она сказала мне, что у неё встреча в тот день.</div></div>
+        <div class="example"><div class="en">He said that they would run the following day.</div><div class="ru">Он сказал, что они побегут на следующий день.</div></div>
+        <div class="example"><div class="en">She said that she was going to stay at her grandfather's house that week.</div><div class="ru">Она сказала, что собирается остаться у дедушки на этой неделе.</div></div>
+        <div class="example"><div class="en">Nazokat said that he was stupid.</div><div class="ru">Назокат сказала, что он глупый.</div></div>
+        <div class="example"><div class="en">She said that she would go to the IELTS zone after the lesson.</div><div class="ru">Она сказала, что пойдёт в IELTS zone после урока.</div></div>
+        <div class="example"><div class="en">They told me that they were going to have a picnic that week.</div><div class="ru">Они сказали мне, что собираются устроить пикник на этой неделе.</div></div>
+      </div>
+      <a class="top-link" href="#topic-2">↑ начало темы</a>
+    </section>
 
-  <!-- ============ PAGE 3: QUIZ ============ -->
-  <section class="page" id="quiz-page">
-    <div class="section-heading"><span class="no">✎</span> Проверь себя</div>
-    <div class="paper">
-      <p class="usecase-sub">Выбери тему для практики. Вопросы перемешаны — каждый заход будет немного другим.</p>
-      <div class="keywords" style="margin-bottom:0;">
-        <button class="tab-btn active" id="quiz-pc-btn" style="border-style:solid;">Present Continuous</button>
-        <button class="tab-btn" id="quiz-rs-btn">Reported Speech</button>
-      </div>
-    </div>
+    <!-- TOPIC 3: Reported Speech (продолжение) -->
+    <section class="topic" id="topic-3" data-num="03">
+      <h2>Reported Speech — Косвенная речь (продолжение)</h2>
 
-    <div class="quiz-box" id="quiz-box">
-      <div class="quiz-progress">
-        <span id="quiz-progress-text">Вопрос 1 из 8</span>
-        <span class="quiz-score" id="quiz-score-text">0 ✓</span>
+      <h3>1. Yes/No Questions (общие вопросы)</h3>
+      <p><strong>Структура:</strong> asked (me/him/her/us/them) + if / whether + положительное предложение</p>
+      <div class="examples">
+        <div class="example"><div class="en">He asked if I liked music.</div><div class="ru">Он спросил, нравится ли мне музыка.</div></div>
+        <div class="example"><div class="en">He asked if I liked pizza.</div><div class="ru">Он спросил, люблю ли я пиццу.</div></div>
+        <div class="example"><div class="en">She asked if I had seen her keys.</div><div class="ru">Она спросила, видел ли я её ключи.</div></div>
+        <div class="example"><div class="en">He asked if I was coming to the party.</div><div class="ru">Он спросил, иду ли я на вечеринку.</div></div>
+        <div class="example"><div class="en">He asked if I hadn't done my homework.</div><div class="ru">Он спросил, не сделал ли я домашнее задание.</div></div>
+        <div class="example"><div class="en">She asked if I was crying.</div><div class="ru">Она спросила, плачу ли я.</div></div>
       </div>
-      <div id="quiz-q" class="quiz-q"></div>
-      <div id="quiz-options" class="quiz-options"></div>
-      <div class="quiz-feedback" id="quiz-feedback"></div>
-      <div class="quiz-nav">
-        <button class="btn" id="quiz-next-btn" disabled>Далее →</button>
+
+      <h3>2. Wh-Questions (специальные вопросы)</h3>
+      <p><strong>Структура:</strong> asked + what/why/where... + S + V</p>
+      <div class="examples">
+        <div class="example"><div class="en">She asked me where I lived.</div><div class="ru">Она спросила меня, где я живу.</div></div>
+        <div class="example"><div class="en">She asked what time the train left.</div><div class="ru">Она спросила, во сколько уходит поезд.</div></div>
+        <div class="example"><div class="en">He asked why I hadn't called him.</div><div class="ru">Он спросил, почему я не позвонил ему.</div></div>
+        <div class="example"><div class="en">She asked why I was crying.</div><div class="ru">Она спросила, почему я плачу.</div></div>
       </div>
-    </div>
-  </section>
+
+      <h3>3. Reported Speech with COMMANDS (Приказы)</h3>
+
+      <div class="state-block positive">
+        <div class="state-title">(+) Positive command</div>
+        <div class="formula">told (me/him/her/us/them) + to + V1</div>
+        <div class="example"><div class="en">My teacher told me to open the door.</div><div class="ru">Учитель сказал мне открыть дверь.</div></div>
+      </div>
+
+      <div class="state-block negative">
+        <div class="state-title">(−) Negative command</div>
+        <div class="formula">told (me/him/her/us/them) + not to + V1</div>
+        <div class="example"><div class="en">The teacher told Muhammad Yusuf not to swim on the chair.</div><div class="ru">Учитель сказал Мухаммаду Юсуфу не плавать на стуле.</div></div>
+      </div>
+
+      <h3>Used to &amp; Would (дополнительно)</h3>
+      <p><strong>Used to</strong> — описывает прошедшие состояния или привычки, которые больше не происходят сейчас.</p>
+      <div class="formula">S + used to + V1</div>
+      <div class="examples">
+        <div class="example"><div class="en">I used to live in London.</div><div class="ru">Я раньше жил в Лондоне.</div></div>
+        <div class="example"><div class="en">He didn't use to like vegetables.</div><div class="ru">Раньше он не любил овощи.</div></div>
+      </div>
+
+      <p><strong>Would</strong> — описывает повторяющиеся действия в прошлом (только с action verbs).</p>
+      <div class="formula">S + would + V1</div>
+      <div class="examples">
+        <div class="example"><div class="en">She would bake cookies every weekend.</div><div class="ru">Она пекла печенье каждые выходные.</div></div>
+        <div class="example"><div class="en">My dad would drive us to school every day.</div><div class="ru">Мой папа возил нас в школу каждый день.</div></div>
+      </div>
+      <div class="state-block negative" style="border-left-color: #b35c4a;">
+        <div class="state-title" style="color:#b35c4a;">⚠️ Важное правило</div>
+        <p><strong>Не используйте 'would' с глаголами состояния</strong> (know, like, believe, love, want, need, understand).</p>
+        <div class="example"><div class="en">✔ I used to love that song. / ✘ I would love that song.</div></div>
+      </div>
+      <a class="top-link" href="#topic-3">↑ начало темы</a>
+    </section>
+
+    <section class="topic" id="topic-4" data-num="04">
+      <h3>Used to &amp; Would</h3>
+      <p><strong>Used to</strong> — описывает прошедшие состояния или привычки, которые больше не происходят сейчас.</p>
+      <div class="formula">S + used to + V1</div>
+      <div class="examples">
+        <div class="example"><div class="en">I used to live in London.</div><div class="ru">Я раньше жил в Лондоне.</div></div>
+        <div class="example"><div class="en">He didn't use to like vegetables.</div><div class="ru">Раньше он не любил овощи.</div></div>
+      </div>
+
+      <p><strong>Would</strong> — описывает повторяющиеся действия в прошлом (только с action verbs).</p>
+      <div class="formula">S + would + V1</div>
+      <div class="examples">
+        <div class="example"><div class="en">She would bake cookies every weekend.</div><div class="ru">Она пекла печенье каждые выходные.</div></div>
+        <div class="example"><div class="en">My dad would drive us to school every day.</div><div class="ru">Мой папа возил нас в школу каждый день.</div></div>
+      </div>
+      <div class="state-block negative" style="border-left-color: #b35c4a;">
+        <div class="state-title" style="color:#b35c4a;">⚠️ Важное правило</div>
+        <p><strong>Не используйте 'would' с глаголами состояния</strong> (know, like, believe, love, want, need, understand).</p>
+        <div class="example"><div class="en">✔ I used to love that song. / ✘ I would love that song.</div></div>
+      </div>
+      <a class="top-link" href="#topic-3">↑ начало темы</a>
+    </section>
+
+  </main>
 
   <footer>
-    <div class="sig">повторяйте почаще — и всё получится :)</div>
-    <p>English Group Notebook · Present Continuous & Reported Speech</p>
+    <div class="footer-inner">
+      <div class="footer-brand">Grammar<span style="color: var(--green-deep);">B1+</span></div>
+    </div>
   </footer>
-</div>
 
-<script>
-  // ---------- TAB NAVIGATION ----------
-  const tabBtns = document.querySelectorAll('.tab-row .tab-btn');
-  const pages = document.querySelectorAll('.page');
-  tabBtns.forEach(btn=>{
-    btn.addEventListener('click', ()=>{
-      tabBtns.forEach(b=>b.classList.remove('active'));
-      btn.classList.add('active');
-      const target = btn.dataset.target;
-      pages.forEach(p=>p.classList.toggle('active', p.id===target));
-      window.scrollTo({top:0, behavior:'smooth'});
+  <script>
+    const burgerBtn = document.getElementById('burgerBtn');
+    const navDrawer = document.getElementById('navDrawer');
+    const navOverlay = document.getElementById('navOverlay');
+    const navClose = document.getElementById('navClose');
+    const navLinks = document.querySelectorAll('.nav-list a');
+
+    function openNav() {
+      navDrawer.classList.add('open');
+      navOverlay.classList.add('show');
+      burgerBtn.classList.add('open');
+      burgerBtn.setAttribute('aria-expanded', 'true');
+    }
+
+    function closeNav() {
+      navDrawer.classList.remove('open');
+      navOverlay.classList.remove('show');
+      burgerBtn.classList.remove('open');
+      burgerBtn.setAttribute('aria-expanded', 'false');
+    }
+
+    burgerBtn.addEventListener('click', () => {
+      navDrawer.classList.contains('open') ? closeNav() : openNav();
     });
-  });
+    navClose.addEventListener('click', closeNav);
+    navOverlay.addEventListener('click', closeNav);
+    navLinks.forEach(link => link.addEventListener('click', closeNav));
 
-  // ---------- REPORTED SPEECH WORKED EXAMPLES ----------
-  const rsExamples = [
-    { direct: "I am tired.", context:"She said...", reveal:"She said (that) she was tired." },
-    { direct: "We are going to the museum today.", context:"She said...", reveal:"She said that they were going to the museum that day." },
-    { direct: "I can't find my phone.", context:"He said...", reveal:"He said that he couldn't find his phone." },
-    { direct: "This task is complex.", context:"— (statement about the task)", reveal:"That task was complex." },
-    { direct: "I have a meeting today.", context:"She told me...", reveal:"She told me she had a meeting that day." },
-    { direct: "We will run tomorrow.", context:"He said...", reveal:"He said that they would run the following day." },
-    { direct: "The children have played volleyball.", context:"My teacher told me...", reveal:"My teacher told me that the children had played volleyball." },
-    { direct: "Azizbek must clean the whiteboard today.", context:"She said...", reveal:"She said Azizbek had to clean the whiteboard that day." },
-    { direct: "You may come late tomorrow.", context:"He told me...", reveal:"He told me that I/we might come late the next day." },
-    { direct: "She is going to stay at her grandfather's house this week.", context:"She said...", reveal:"She said that she was going to stay at her grandfather's house that week." },
-    { direct: "He is stupid.", context:"Nazokat said...", reveal:"Nazokat said that he was stupid." },
-    { direct: "Она сказала, что пойдёт в IELTS zone после урока.", context:"(перевод на английский)", reveal:"She said that she would go to the IELTS zone after the lesson." },
-    { direct: "Они сказали мне, что собираются устроить пикник на этой неделе.", context:"(перевод на английский)", reveal:"They told me that they were going to have a picnic that week." },
-  ];
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeNav();
+    });
 
-  const flipList = document.getElementById('flip-list');
-  rsExamples.forEach((ex, i)=>{
-    const card = document.createElement('div');
-    card.className = 'flip-card';
-    card.innerHTML = `
-      <span class="flip-hint">открыть</span>
-      <div><span class="num">${i+1}.</span><span class="direct">${ex.direct}</span></div>
-      <div style="font-size:0.85rem; color:var(--ink-soft); margin-top:2px;">${ex.context}</div>
-      <div class="reveal">→ <b>${ex.reveal}</b></div>
-    `;
-    card.addEventListener('click', ()=> card.classList.toggle('open'));
-    flipList.appendChild(card);
-  });
+    // highlight active section in nav
+    const sections = document.querySelectorAll('.topic');
+    const linkMap = {};
+    navLinks.forEach(l => linkMap[l.getAttribute('href').slice(1)] = l);
 
-  // ---------- QUIZ DATA ----------
-  const pcQuestions = [
-    { ru:"Я читаю книгу моего брата сейчас.", options:["I read my brother's book now.","I am reading my brother's book now.","I was reading my brother's book now."], correct:1 },
-    { ru:"Azizbek встречается с ней временно.", options:["Azizbek is dating her temporarily.","Azizbek dates her temporarily.","Azizbek dated her temporarily."], correct:0 },
-    { ru:"М.У. будет жить в деревне на этой неделе.", options:["M.U. lives in the village this week.","M.U. is living in the village this week.","M.U. has lived in the village this week."], correct:1 },
-    { ru:"Я обычно готовлю дома, но сегодня я закажу пиццу.", options:["I usually cook at home, but today I order a pizza.","I usually cook at home, but today I am ordering a pizza.","I am usually cooking at home, but today I order a pizza."], correct:1 },
-    { ru:"Он становится более уверенным.", options:["He becomes more confident.","He is becoming more confident.","He became more confident."], correct:1 },
-    { ru:"Погода становится всё жарче и жарче.", options:["The weather gets hotter and hotter.","The weather is getting hotter and hotter.","The weather got hotter and hotter."], correct:1 },
-    { ru:"Nazokat постоянно приходит поздно. (это раздражает)", options:["Nazokat constantly comes late.","Nazokat is constantly coming late.","Nazokat constantly came late."], correct:1 },
-    { ru:"Какой глагол НЕ используется в Present Continuous, т.к. описывает состояние?", options:["running","know","eating"], correct:1 },
-  ];
-
-  const rsQuestions = [
-    { ru:'"I am tired." — She said...', options:["she is tired.","she was tired.","she has been tired."], correct:1 },
-    { ru:'"I can\'t find my phone." — He said...', options:["he can't find his phone.","he couldn't find his phone.","he can not found his phone."], correct:1 },
-    { ru:'"We will run tomorrow." — He said that...', options:["they will run tomorrow.","they would run the next day.","they would run the following day."], correct:2 },
-    { ru:'"I have a meeting today." — She told me...', options:["she has a meeting today.","she had a meeting that day.","she had had a meeting that day."], correct:1 },
-    { ru:'"You may come late tomorrow." — He told me that...', options:["I might come late the next day.","I may come late tomorrow.","I could come late the next day."], correct:0 },
-    { ru:'"Azizbek must clean the whiteboard today." — She said...', options:["Azizbek must clean the whiteboard today.","Azizbek had to clean the whiteboard that day.","Azizbek has to clean the whiteboard that day."], correct:1 },
-    { ru:'"The children have played volleyball." — My teacher told me that...', options:["the children played volleyball.","the children have played volleyball.","the children had played volleyball."], correct:2 },
-    { ru:'Что происходит со словом "yesterday" в косвенной речи?', options:["становится 'the day before'","становится 'that day'","остаётся без изменений"], correct:0 },
-  ];
-
-  let currentBank = pcQuestions;
-  let quizOrder = [];
-  let quizIndex = 0;
-  let quizScore = 0;
-  let answered = false;
-
-  function shuffle(arr){
-    const a = arr.slice();
-    for(let i=a.length-1;i>0;i--){
-      const j = Math.floor(Math.random()*(i+1));
-      [a[i],a[j]] = [a[j],a[i]];
-    }
-    return a;
-  }
-
-  function startQuiz(bank){
-    currentBank = bank;
-    quizOrder = shuffle(bank.map((_,i)=>i));
-    quizIndex = 0;
-    quizScore = 0;
-    renderQuestion();
-  }
-
-  function renderQuestion(){
-    answered = false;
-    const qBox = document.getElementById('quiz-box');
-    document.getElementById('quiz-next-btn').disabled = true;
-    document.getElementById('quiz-feedback').textContent = '';
-
-    if(quizIndex >= quizOrder.length){
-      document.getElementById('quiz-progress-text').textContent = 'Готово!';
-      document.getElementById('quiz-q').innerHTML = '';
-      document.getElementById('quiz-options').innerHTML = `
-        <div class="quiz-done">
-          <div class="big-score">${quizScore} / ${quizOrder.length}</div>
-          <p style="color:var(--ink-soft);">правильных ответов</p>
-          <button class="btn restart-btn" id="quiz-restart-btn">Пройти ещё раз</button>
-        </div>`;
-      document.getElementById('quiz-next-btn').style.display = 'none';
-      document.getElementById('quiz-restart-btn').addEventListener('click', ()=> startQuiz(currentBank));
-      return;
-    }
-    document.getElementById('quiz-next-btn').style.display = '';
-    document.getElementById('quiz-progress-text').textContent = `Вопрос ${quizIndex+1} из ${quizOrder.length}`;
-    document.getElementById('quiz-score-text').textContent = `${quizScore} ✓`;
-
-    const q = currentBank[quizOrder[quizIndex]];
-    document.getElementById('quiz-q').innerHTML = `<span class="ru">${q.ru}</span>Выбери правильный вариант:`;
-
-    const optWrap = document.getElementById('quiz-options');
-    optWrap.innerHTML = '';
-    const optOrder = shuffle(q.options.map((_,i)=>i));
-    optOrder.forEach(origIdx=>{
-      const btn = document.createElement('button');
-      btn.className = 'quiz-opt';
-      btn.textContent = q.options[origIdx];
-      btn.addEventListener('click', ()=>{
-        if(answered) return;
-        answered = true;
-        const allBtns = optWrap.querySelectorAll('.quiz-opt');
-        allBtns.forEach(b=>b.disabled = true);
-        if(origIdx === q.correct){
-          btn.classList.add('correct');
-          quizScore++;
-          document.getElementById('quiz-feedback').textContent = 'Верно! ✓';
-          document.getElementById('quiz-feedback').style.color = 'var(--green-check)';
-        } else {
-          btn.classList.add('wrong');
-          allBtns.forEach(b=>{
-            if(b.textContent === q.options[q.correct]) b.classList.add('correct');
-          });
-          document.getElementById('quiz-feedback').textContent = `Неверно. Правильный ответ: "${q.options[q.correct]}"`;
-          document.getElementById('quiz-feedback').style.color = 'var(--red-pen)';
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        const link = linkMap[entry.target.id];
+        if (!link) return;
+        if (entry.isIntersecting) {
+          navLinks.forEach(l => l.classList.remove('active'));
+          link.classList.add('active');
         }
-        document.getElementById('quiz-score-text').textContent = `${quizScore} ✓`;
-        document.getElementById('quiz-next-btn').disabled = false;
       });
-      optWrap.appendChild(btn);
-    });
-  }
+    }, { rootMargin: '-15% 0px -70% 0px', threshold: 0 });
 
-  document.getElementById('quiz-next-btn').addEventListener('click', ()=>{
-    quizIndex++;
-    renderQuestion();
-  });
-
-  document.getElementById('quiz-pc-btn').addEventListener('click', ()=>{
-    document.getElementById('quiz-pc-btn').classList.add('active');
-    document.getElementById('quiz-rs-btn').classList.remove('active');
-    startQuiz(pcQuestions);
-  });
-  document.getElementById('quiz-rs-btn').addEventListener('click', ()=>{
-    document.getElementById('quiz-rs-btn').classList.add('active');
-    document.getElementById('quiz-pc-btn').classList.remove('active');
-    startQuiz(rsQuestions);
-  });
-
-  // init
-  startQuiz(pcQuestions);
-</script>
-
+    sections.forEach(s => observer.observe(s));
+  </script>
 </body>
 </html>
