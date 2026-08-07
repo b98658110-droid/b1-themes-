@@ -237,6 +237,20 @@
       margin: 0 auto;
       padding: 48px 22px 28px;
     }
+    .date-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.74rem;
+      letter-spacing: 0.06em;
+      color: var(--green-deep);
+      background: var(--green-pale);
+      border: 1px solid var(--rule-strong);
+      padding: 4px 12px;
+      border-radius: 40px;
+      margin-bottom: 10px;
+    }
     .hero-tag {
       display: inline-flex;
       align-items: center;
@@ -634,7 +648,6 @@
       </button>
       <div class="brand">
         Grammar<span class="accent">B1+</span>
-        <span class="brand-sub">3 темы · уровень B1+</span>
       </div>
     </div>
   </header>
@@ -654,12 +667,23 @@
       <li><a href="#topic-2"><span class="nav-num">02</span> Reported Speech (основная часть)</a></li>
       <li><a href="#topic-3"><span class="nav-num">03</span> Reported Speech (продолжение)</a></li>
       <li><a href="#topic-4"><span class="nav-num">04</span> Used to & Would</a></li>
+      <li><a href="#topic-5"><span class="nav-num">05</span> Present Perfect Simple / Continuous</a></li>
+      <li><a href="#topic-6"><span class="nav-num">06</span> Future Simple / Continuous</a></li>
+      <li><a href="#topic-7"><span class="nav-num">07</span> Should / Ought to / Had better</a></li>
+      <li><a href="#topic-8"><span class="nav-num">08</span> So / Such</a></li>
+      <li><a href="#topic-9"><span class="nav-num">09</span> Modal Verbs of Deduction</a></li>
     </ul>
   </nav>
 
   <div class="hero">
     <span class="hero-tag">● B1+ грамматика</span>
     <h1>Тетрадь по английской грамматике</h1>
+    <p class="lead">Present Continuous, Reported Speech (косвенная речь) — все правила, формулы и примеры в одном месте.</p>
+    <div class="quick-grid">
+      <a href="#topic-1"><span class="nav-num">01</span> Present Continuous</a>
+      <a href="#topic-2"><span class="nav-num">02</span> Reported Speech (основная)</a>
+      <a href="#topic-3"><span class="nav-num">03</span> Reported Speech (продолжение)</a>
+    </div>
   </div>
 
   <main>
@@ -834,40 +858,23 @@
         <div class="formula">told (me/him/her/us/them) + not to + V1</div>
         <div class="example"><div class="en">The teacher told Muhammad Yusuf not to swim on the chair.</div><div class="ru">Учитель сказал Мухаммаду Юсуфу не плавать на стуле.</div></div>
       </div>
-
-      <h3>Used to &amp; Would (дополнительно)</h3>
-      <p><strong>Used to</strong> — описывает прошедшие состояния или привычки, которые больше не происходят сейчас.</p>
-      <div class="formula">S + used to + V1</div>
-      <div class="examples">
-        <div class="example"><div class="en">I used to live in London.</div><div class="ru">Я раньше жил в Лондоне.</div></div>
-        <div class="example"><div class="en">He didn't use to like vegetables.</div><div class="ru">Раньше он не любил овощи.</div></div>
-      </div>
-
-      <p><strong>Would</strong> — описывает повторяющиеся действия в прошлом (только с action verbs).</p>
-      <div class="formula">S + would + V1</div>
-      <div class="examples">
-        <div class="example"><div class="en">She would bake cookies every weekend.</div><div class="ru">Она пекла печенье каждые выходные.</div></div>
-        <div class="example"><div class="en">My dad would drive us to school every day.</div><div class="ru">Мой папа возил нас в школу каждый день.</div></div>
-      </div>
-      <div class="state-block negative" style="border-left-color: #b35c4a;">
-        <div class="state-title" style="color:#b35c4a;">⚠️ Важное правило</div>
-        <p><strong>Не используйте 'would' с глаголами состояния</strong> (know, like, believe, love, want, need, understand).</p>
-        <div class="example"><div class="en">✔ I used to love that song. / ✘ I would love that song.</div></div>
-      </div>
       <a class="top-link" href="#topic-3">↑ начало темы</a>
     </section>
 
     <section class="topic" id="topic-4" data-num="04">
       <h3>Used to &amp; Would</h3>
       <p><strong>Used to</strong> — описывает прошедшие состояния или привычки, которые больше не происходят сейчас.</p>
-      <div class="formula">S + used to + V1</div>
+      <div class="formula">S + used to + V1 +  O + M</div>
+      <div class="formula">S + didn't  use to + V1 +  O + M</div>
+      <div class="formula"> Did + S + use to + V1 +  O + M</div>
+
       <div class="examples">
         <div class="example"><div class="en">I used to live in London.</div><div class="ru">Я раньше жил в Лондоне.</div></div>
         <div class="example"><div class="en">He didn't use to like vegetables.</div><div class="ru">Раньше он не любил овощи.</div></div>
       </div>
 
       <p><strong>Would</strong> — описывает повторяющиеся действия в прошлом (только с action verbs).</p>
-      <div class="formula">S + would + V1</div>
+      <div class="formula">S + would + V1    -   ONLY IN POSETIVE</div>
       <div class="examples">
         <div class="example"><div class="en">She would bake cookies every weekend.</div><div class="ru">Она пекла печенье каждые выходные.</div></div>
         <div class="example"><div class="en">My dad would drive us to school every day.</div><div class="ru">Мой папа возил нас в школу каждый день.</div></div>
@@ -877,7 +884,322 @@
         <p><strong>Не используйте 'would' с глаголами состояния</strong> (know, like, believe, love, want, need, understand).</p>
         <div class="example"><div class="en">✔ I used to love that song. / ✘ I would love that song.</div></div>
       </div>
+
+      <p><strong>Would/Used to</strong> - С often/always:</p>
+      <div class="formula">
+        <strong>Always:</strong>
+        <p>always + used to</p>
+        <p>would + always</p>
+      </div>
+
+      <div class="formula">
+        <strong>Often:</strong>
+        <p>Often + used to</p>
+        <p>would + often</p>
+      </div>
+
+
       <a class="top-link" href="#topic-3">↑ начало темы</a>
+    </section>
+
+    <!-- TOPIC 5: Present Perfect Simple & Continuous -->
+    <section class="topic" id="topic-5" data-num="05">
+      <p class="date-tag">📅 21.07.2026</p>
+      <h2>Present Perfect Simple &amp; Continuous</h2>
+
+      <h3>Present Perfect Simple</h3>
+      <div class="state-block positive">
+        <div class="state-title">(+) Affirmative</div>
+        <div class="formula">S + have/has + V3(ed) + C + M</div>
+      </div>
+      <div class="state-block negative">
+        <div class="state-title">(−) Negative</div>
+        <div class="formula">S + have/has + not + V3(ed) + C + M</div>
+      </div>
+      <div class="state-block question">
+        <div class="state-title">(?) Interrogative</div>
+        <div class="formula">Have/Has + S + V3(ed) + C + M?</div>
+      </div>
+
+      <h4 class="sub">Common signal words</h4>
+      <table class="grammar-table">
+        <thead><tr><th>Signal word</th><th>Значение</th></tr></thead>
+        <tbody>
+          <tr><td>Already</td><td>уже (+)</td></tr>
+          <tr><td>Just</td><td>только что (+)</td></tr>
+          <tr><td>Yet</td><td>еще (−) / уже (?)</td></tr>
+          <tr><td>Ever</td><td>когда-либо (?)</td></tr>
+          <tr><td>Never</td><td>никогда (+)</td></tr>
+          <tr><td>For</td><td>на протяжении (период времени) (+)</td></tr>
+          <tr><td>Since</td><td>с (момент в прошлом) (+)</td></tr>
+        </tbody>
+      </table>
+
+      <h4 class="sub">Examples &amp; Practice</h4>
+      <div class="examples">
+        <div class="example"><div class="en">I have lived in Namangan for 5 years.</div><div class="ru">Я живу в Намангане уже 5 лет.</div></div>
+        <div class="example"><div class="en">I have lived in Namangan since 2021.</div><div class="ru">Я живу в Намангане с 2021 года.</div></div>
+        <div class="example"><div class="en">I have already done my homework.</div><div class="ru">Я уже сделал своё д/з.</div></div>
+        <div class="example"><div class="en">Have you done your homework yet?</div><div class="ru">Ты уже сделал своё д/з?</div></div>
+        <div class="example"><div class="en">I have written five emails today.</div></div>
+        <div class="example"><div class="en">She has lost her phone.</div></div>
+        <div class="example"><div class="en">I have finished the book you lent me.</div></div>
+        <div class="example"><div class="en">He hasn't seen that movie yet.</div></div>
+        <div class="example"><div class="en">Have you ever visited Italy?</div></div>
+      </div>
+      <p><strong>Focus:</strong> Result or completed actions.</p>
+
+      <h3>Vocabulary &amp; Usage Notes</h3>
+      <div class="keyword-pills">
+        <span class="pill">по вечерам — in the evenings</span>
+        <span class="pill">утром — in the morning</span>
+        <span class="pill">днем — in the afternoon</span>
+        <span class="pill">вечером — in the evening</span>
+        <span class="pill">по ночам — at night</span>
+        <span class="pill">сегодня ночью/вечером — tonight</span>
+        <span class="pill">в полночь — at midnight</span>
+      </div>
+      <div class="state-block negative">
+        <div class="state-title">Правильное употребление</div>
+        <p>❌ I go to the grandmother<br />✅ I visit my grandmother. / I go to my grandmother's house.</p>
+        <p>Играть на гитаре / пианино — play the guitar / play the piano</p>
+      </div>
+
+      <h3>Present Perfect Continuous</h3>
+      <div class="state-block positive">
+        <div class="state-title">(+) Affirmative</div>
+        <div class="formula">S + have/has + been + V_ing + C + M</div>
+      </div>
+      <div class="state-block negative">
+        <div class="state-title">(−) Negative</div>
+        <div class="formula">S + have/has + not + been + V_ing + C + M</div>
+      </div>
+      <div class="state-block question">
+        <div class="state-title">(?) Interrogative</div>
+        <div class="formula">Have/Has + S + been + V_ing + C + M?</div>
+      </div>
+
+      <h4 class="sub">Common signal words</h4>
+      <p><strong>for, since, all day, all week, recently</strong> (недавно), <strong>lately</strong> (в последнее время)</p>
+
+      <h4 class="sub">Examples</h4>
+      <div class="examples">
+        <div class="example"><div class="en">She has been studying English for two years.</div><div class="ru">Она учит английский уже 2 года.</div></div>
+        <div class="example"><div class="en">They haven't been sleeping well lately.</div><div class="ru">В последнее время они плохо спят.</div></div>
+        <div class="example"><div class="en">Have you been waiting long?</div><div class="ru">Ты долго ждёшь?</div></div>
+        <div class="example"><div class="en">I've been working all morning.</div></div>
+        <div class="example"><div class="en">They've been learning English since January.</div></div>
+      </div>
+      <p><strong>Focus:</strong> Duration or unfinished / recent actions.</p>
+
+      <h3>Present Perfect vs Present Perfect Continuous</h3>
+      <table class="grammar-table">
+        <thead><tr><th>Present Perfect</th><th>Present Perfect Continuous</th></tr></thead>
+        <tbody>
+          <tr><td>I've cleaned the room. (Комната чистая — результат)</td><td>I've been cleaning the room. (Я убирался — процесс)</td></tr>
+          <tr><td>She has written 3 reports. (Написала 3 отчёта)</td><td>She has been writing reports. (Пишет отчёты какое-то время)</td></tr>
+          <tr><td>We've eaten dinner. (Поужинали)</td><td>We've been eating for an hour. (Едим уже час)</td></tr>
+        </tbody>
+      </table>
+      <p><strong>Use Simple when:</strong> Action is completed; focus on how many / how much (результат / количество).</p>
+      <p><strong>Use Continuous when:</strong> Action is ongoing / unfinished; focus on how long (длительность процесса).</p>
+      <a class="top-link" href="#topic-5">↑ начало темы</a>
+    </section>
+
+    <!-- TOPIC 6: Future Simple & Future Continuous -->
+    <section class="topic" id="topic-6" data-num="06">
+      <p class="date-tag">📅 25.07.2026</p>
+      <h2>Future Simple &amp; Future Continuous</h2>
+
+      <h3>Future Simple</h3>
+      <div class="state-block positive">
+        <div class="state-title">(+) Positive</div>
+        <div class="formula">S + will + V1 + C + M</div>
+      </div>
+      <div class="state-block negative">
+        <div class="state-title">(−) Negative</div>
+        <div class="formula">S + will not (won't) + V1 + C + M</div>
+      </div>
+      <div class="state-block question">
+        <div class="state-title">(?) Question</div>
+        <div class="formula">Will + S + V1 + C + M?</div>
+      </div>
+
+      <h4 class="sub">Use</h4>
+      <div class="examples">
+        <div class="example"><div class="en">It will rain tomorrow.</div><div class="ru">Предсказания (predictions)</div></div>
+        <div class="example"><div class="en">I'll call you later.</div><div class="ru">Решения в момент речи</div></div>
+        <div class="example"><div class="en">I'll help you. / Will you drink tea or coffee?</div><div class="ru">Обещания / предложения</div></div>
+      </div>
+
+      <h4 class="sub">Examples</h4>
+      <div class="examples">
+        <div class="example"><div class="en">I'll help you carry those bags.</div></div>
+        <div class="example"><div class="en">He won't arrive before 8 p.m.</div></div>
+        <div class="example"><div class="en">Will they stay for dinner?</div></div>
+      </div>
+
+      <h3>Future Continuous</h3>
+      <div class="state-block positive">
+        <div class="state-title">(+) Positive</div>
+        <div class="formula">S + will be + V_ing + C + M</div>
+      </div>
+      <div class="state-block negative">
+        <div class="state-title">(−) Negative</div>
+        <div class="formula">S + will not be (won't be) + V_ing + C + M</div>
+      </div>
+      <div class="state-block question">
+        <div class="state-title">(?) Question</div>
+        <div class="formula">Will + S + be + V_ing + C + M?</div>
+      </div>
+
+      <h4 class="sub">Use</h4>
+      <p>Action in progress at a specific time in the future (действие будет длиться в точный момент в будущем).</p>
+      <p><strong>Signal words:</strong> at this time tomorrow, next week, at 8 p.m., in the evening, from 7 to 8.</p>
+
+      <h4 class="sub">Examples</h4>
+      <div class="examples">
+        <div class="example"><div class="en">At this time tomorrow, I'll be flying to Paris.</div></div>
+        <div class="example"><div class="en">She won't be attending the meeting next week.</div></div>
+        <div class="example"><div class="en">Will you be using the computer in the afternoon?</div></div>
+      </div>
+
+      <h3>Future Simple vs Future Continuous</h3>
+      <table class="grammar-table">
+        <thead><tr><th>Future Simple</th><th>Future Continuous</th></tr></thead>
+        <tbody>
+          <tr><td>I'll clean the kitchen later.</td><td>I'll be cleaning the kitchen at 6.</td></tr>
+          <tr><td>She won't go to school tomorrow.</td><td>She will be studying from home instead.</td></tr>
+          <tr><td>Will you help me?</td><td>Will you be using the computer later?</td></tr>
+        </tbody>
+      </table>
+      <a class="top-link" href="#topic-6">↑ начало темы</a>
+    </section>
+
+    <!-- TOPIC 7: Should / Ought to / Had better -->
+    <section class="topic" id="topic-7" data-num="07">
+      <p class="date-tag">📅 29.07.2026</p>
+      <h2>Should / Ought to / Had better</h2>
+
+      <h3>1. Should — следует (нейтральный совет)</h3>
+      <div class="state-block positive">
+        <div class="state-title">(+)</div>
+        <div class="formula">S + should + V1</div>
+        <div class="example"><div class="en">You should eat more vegetables.</div></div>
+      </div>
+      <div class="state-block negative">
+        <div class="state-title">(−)</div>
+        <div class="formula">S + shouldn't + V1</div>
+        <div class="example"><div class="en">She shouldn't be rude to others.</div></div>
+      </div>
+      <div class="state-block question">
+        <div class="state-title">(?)</div>
+        <div class="formula">Should + S + V1?</div>
+        <div class="example"><div class="en">Should I study English?</div></div>
+      </div>
+
+      <h3>2. Ought to — следует / должен (более формальный совет)</h3>
+      <div class="state-block positive">
+        <div class="state-title">(+)</div>
+        <div class="formula">S + ought to + V1</div>
+        <div class="example"><div class="en">You ought to be on time.</div></div>
+      </div>
+      <p><strong>Note:</strong> Формы отрицания и вопроса с "Ought to" в современном английском практически не используются.</p>
+
+      <h3>3. Had better — лучше / стоит (настоятельный совет, предупреждение)</h3>
+      <div class="state-block positive">
+        <div class="state-title">(+)</div>
+        <div class="formula">S + had better + V1</div>
+        <div class="example"><div class="en">You had better take an umbrella.</div><div class="ru">Тебе лучше взять зонт</div></div>
+      </div>
+      <div class="state-block negative">
+        <div class="state-title">(−)</div>
+        <div class="formula">S + had better not + V1</div>
+        <div class="example"><div class="en">They had better not forget their passports.</div><div class="ru">Им лучше не забывать паспорта</div></div>
+      </div>
+      <div class="state-block question">
+        <div class="state-title">(?)</div>
+        <div class="formula">Had + S + better + V1?</div>
+        <div class="example"><div class="en">Had I better talk to him now?</div><div class="ru">Стоит ли мне поговорить с ним сейчас?</div></div>
+      </div>
+      <a class="top-link" href="#topic-7">↑ начало темы</a>
+    </section>
+
+    <!-- TOPIC 8: So / Such -->
+    <section class="topic" id="topic-8" data-num="08">
+      <p class="date-tag">📅 30.07.2026</p>
+      <h2>So / Such</h2>
+
+      <h3>So | So + adj/adv + (that)</h3>
+      <p>Употребляется перед прилагательными или наречиями («так... что»).</p>
+      <div class="state-block positive">
+        <div class="state-title">(+)</div>
+        <div class="formula">S + V + so + adj/adv + (that) + result</div>
+        <div class="example"><div class="en">She is so kind that everyone likes her.</div></div>
+      </div>
+      <div class="state-block negative">
+        <div class="state-title">(−)</div>
+        <div class="formula">S + do/does not + V + so + adj/adv + (that) + result</div>
+        <div class="example"><div class="en">He doesn't speak so loudly that people complain.</div></div>
+      </div>
+      <div class="state-block question">
+        <div class="state-title">(?)</div>
+        <div class="formula">Do/Does + S + V + so + adj/adv + (that) + result?</div>
+        <div class="example"><div class="en">Is she so tired that she can't study?</div></div>
+      </div>
+
+      <h3>Such | Such + (a/an) + adj + noun + (that)</h3>
+      <p>Употребляется перед существительными с прилагательным («такой... что»).</p>
+      <div class="state-block positive">
+        <div class="state-title">(+)</div>
+        <div class="formula">S + V + such + (a/an) + adj + noun + (that)</div>
+        <div class="example"><div class="en">This is such a beautiful city that many tourists visit it.</div></div>
+      </div>
+      <div class="state-block negative">
+        <div class="state-title">(−)</div>
+        <div class="formula">S + do/does not + V + such + (a/an) + adj + noun + (that)</div>
+        <div class="example"><div class="en">This isn't such a difficult task that everyone fails it.</div></div>
+      </div>
+      <div class="state-block question">
+        <div class="state-title">(?)</div>
+        <div class="formula">Do/Does + S + V + such + (a/an) + adj + noun + (that)?</div>
+        <div class="example"><div class="en">Is it such a good film that everyone watches it?</div></div>
+      </div>
+      <a class="top-link" href="#topic-8">↑ начало темы</a>
+    </section>
+
+    <!-- TOPIC 9: Modal Verbs of Deduction and Speculation -->
+    <section class="topic" id="topic-9" data-num="09">
+      <p class="date-tag">📅 04.08.2026</p>
+      <h2>Modal Verbs of Deduction and Speculation in the Present</h2>
+
+      <h3>1. 90% уверенности (Уверенность в утверждении)</h3>
+      <div class="formula">Must + V1 → должно быть, наверняка</div>
+      <div class="example"><div class="en">He must work here.</div><div class="ru">Он, должно быть, работает здесь.</div></div>
+
+      <h3>2. 50% уверенности (Предположение / Возможность)</h3>
+      <div class="formula">May / Might / Could + V1 → возможно, может быть</div>
+      <div class="example"><div class="en">She might know the answer.</div><div class="ru">Возможно, она знает ответ.</div></div>
+
+      <h3>3. 50% уверенности (Отрицательное предположение)</h3>
+      <div class="formula">May not / Might not + V1 → возможно, нет</div>
+      <p><strong>Note:</strong> Формы mayn't и mightn't устарели и не используются.</p>
+      <div class="example"><div class="en">He might not know.</div><div class="ru">Возможно, он не знает.</div></div>
+
+      <h3>4. 90% уверенности (Уверенность в отрицании)</h3>
+      <div class="formula">Can't / Couldn't + V1 → не может быть, чтобы...</div>
+      <div class="examples">
+        <div class="example"><div class="en">She can't be here.</div><div class="ru">Она не может быть здесь.</div></div>
+        <div class="example"><div class="en">She can't know the answer.</div><div class="ru">Не может быть, чтобы она знала ответ.</div></div>
+        <div class="example"><div class="en">He couldn't be her brother.</div><div class="ru">Он не может быть её братом.</div></div>
+      </div>
+
+      <div class="state-block negative" style="border-left-color: #b35c4a;">
+        <div class="state-title" style="color:#b35c4a;">💡 Важные правила</div>
+        <p>1. Эти конструкции используются только для умозаключений о настоящем времени.</p>
+        <p>2. "Mustn't" НЕ используется для логических предположений! Для уверенного отрицания («не может быть») всегда используй <strong>can't</strong> или <strong>couldn't</strong>.</p>
+      </div>
+      <a class="top-link" href="#topic-9">↑ начало темы</a>
     </section>
 
   </main>
